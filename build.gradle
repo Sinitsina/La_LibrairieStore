@@ -24,6 +24,14 @@ dependencies {
     annotationProcessor('org.hibernate:hibernate-jpamodelgen:6.0.0.Alpha5')
 
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-jdbc', version: '2.3.1.RELEASE'
+
+    // https://mvnrepository.com/artifact/org.postgresql/postgresql
+    compile group: 'org.postgresql', name: 'postgresql', version: '42.2.18'
+
+    // https://mvnrepository.com/artifact/org.flywaydb/flyway-core
+    compile group: 'org.flywaydb', name: 'flyway-core', version: '7.5.3'
+
+
 }
 
 

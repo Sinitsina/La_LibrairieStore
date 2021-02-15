@@ -1,0 +1,18 @@
+insert into manufacturer(name, is_deleted) values('Азбука', 'false');
+insert into manufacturer(name, is_deleted) values('Альпина Паблишер', 'false');
+insert into manufacturer(name, is_deleted) values('Альфа-дизайн', 'false');
+insert into manufacturer(name, is_deleted) values('АСТ', 'false');
+insert into manufacturer(name, is_deleted) values('Балет Классик', 'false');
+insert into manufacturer(name, is_deleted) values('БГВ', 'false');
+insert into manufacturer(name, is_deleted) values('БуксМАрт', 'false');
+insert into manufacturer(name, is_deleted) values('Копирка', 'false');
+insert into manufacturer(name, is_deleted) values('Малыш', 'false');
+insert into manufacturer(name, is_deleted) values('Мир открыток', 'false');
+insert into manufacturer(name, is_deleted) values('Праздник', 'false');
+insert into manufacturer(name, is_deleted) values('Прометей', 'false');
+insert into manufacturer(name, is_deleted) values('Просвещение', 'false');
+insert into manufacturer(name, is_deleted) values('Родина', 'false');
+insert into manufacturer(name, is_deleted) values('Светокопи', 'false');
+insert into manufacturer(name, is_deleted) values('Снегурочка', 'false');
+insert into manufacturer(name, is_deleted) values('Указка', 'false');
+insert into manufacturer(name, is_deleted) values('Эксмо', 'false');

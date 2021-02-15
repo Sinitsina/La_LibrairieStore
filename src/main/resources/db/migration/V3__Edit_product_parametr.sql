@@ -1,0 +1,1 @@
+ALTER TABLE product ALTER COLUMN discount_percent DROP NOT NULL;
