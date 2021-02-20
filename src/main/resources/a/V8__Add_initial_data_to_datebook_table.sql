@@ -1,0 +1,10 @@
+insert into datebook(product_id, is_dated) values('131', 'true');
+insert into datebook(product_id, is_dated) values('132', 'true');
+insert into datebook(product_id, is_dated) values('133', 'true');
+insert into datebook(product_id, is_dated) values('134', 'true');
+insert into datebook(product_id, is_dated) values('135', 'true');
+insert into datebook(product_id, is_dated) values('136', 'false');
+insert into datebook(product_id, is_dated) values('137', 'false');
+insert into datebook(product_id, is_dated) values('138', 'false');
+insert into datebook(product_id, is_dated) values('139', 'false');
+insert into datebook(product_id, is_dated) values('140', 'false');
