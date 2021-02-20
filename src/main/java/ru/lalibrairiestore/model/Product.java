@@ -20,7 +20,7 @@ import java.math.BigDecimal;
 public class Product {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
@@ -52,28 +52,28 @@ public class Product {
      * Product type of cover
      */
     @ManyToOne
-    @Column(name = "cover_id")
+    @JoinColumn(name = "cover_id")
     private Cover cover;
 
     /**
      * Product format
      */
     @ManyToOne
-    @Column(name = "format_id")
+    @JoinColumn(name = "format_id")
     private Format format;
 
     /**
      * Product sheet's type
      */
     @ManyToOne
-    @Column(name = "sheets_type_id")
+    @JoinColumn(name = "sheets_type_id")
     private SheetsType sheetsType;
 
     /**
      * Product manufacturer
      */
     @ManyToOne
-    @Column(name = "manufacturer_id")
+    @JoinColumn(name = "manufacturer_id")
     private Manufacturer manufacturer;
 
     /**

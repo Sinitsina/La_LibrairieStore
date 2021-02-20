@@ -14,7 +14,7 @@ import javax.persistence.*;
 public class Datebook extends Product {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 

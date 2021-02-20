@@ -30,7 +30,7 @@ public class Book extends Product {
      */
     @Enumerated(EnumType.STRING)
     @Column(name = "genre")
-    private List<Genre> genres;
+    private Genre genres;
 
     /**
      * Book publication date
@@ -42,5 +42,5 @@ public class Book extends Product {
      * Quantity of book pages
      */
     @Column(name = "pages")
-    private short pages;
+    private int pages;
 }

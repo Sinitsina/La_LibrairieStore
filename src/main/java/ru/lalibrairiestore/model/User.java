@@ -14,7 +14,7 @@ import javax.persistence.*;
 public class User {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
@@ -66,7 +66,4 @@ public class User {
      */
     @Column(name = "is_deleted")
     private boolean isDeleted;
-
-
-
 }

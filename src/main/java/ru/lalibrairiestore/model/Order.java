@@ -16,7 +16,7 @@ import java.util.Date;
 public class Order {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
@@ -24,7 +24,7 @@ public class Order {
      * User
      */
     @ManyToOne
-    @Column(name = "user_customer_id")
+    @JoinColumn(name = "user_customer_id")
     private User customer;
 
     /**
@@ -42,6 +42,7 @@ public class Order {
     /**
      * Order status
      */
+    @Enumerated(EnumType.STRING)
     @Column(name = "order_status")
     private OrderStatus orderStatus;
 

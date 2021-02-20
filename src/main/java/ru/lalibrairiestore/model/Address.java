@@ -33,15 +33,15 @@ public class Address {
     /**
      * House
      */
-    private String house;
+    private int house;
 
     /**
      * Apartment
      */
-    private String apartment;
+    private int apartment;
 
     /**
      * Index
      */
-    private String index;
+    private int index;
 }
