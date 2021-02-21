@@ -1,0 +1,10 @@
+insert into copybook (product_id) values ('121');
+insert into copybook (product_id) values ('122');
+insert into copybook (product_id) values ('123');
+insert into copybook (product_id) values ('124');
+insert into copybook (product_id) values ('125');
+insert into copybook (product_id) values ('126');
+insert into copybook (product_id) values ('127');
+insert into copybook (product_id) values ('128');
+insert into copybook (product_id) values ('129');
+insert into copybook (product_id) values ('130');

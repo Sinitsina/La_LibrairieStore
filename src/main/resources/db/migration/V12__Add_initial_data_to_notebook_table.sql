@@ -1,0 +1,10 @@
+insert into notebook (product_id) values ('151');
+insert into notebook (product_id) values ('152');
+insert into notebook (product_id) values ('153');
+insert into notebook (product_id) values ('154');
+insert into notebook (product_id) values ('155');
+insert into notebook (product_id) values ('156');
+insert into notebook (product_id) values ('157');
+insert into notebook (product_id) values ('158');
+insert into notebook (product_id) values ('159');
+insert into notebook (product_id) values ('160');

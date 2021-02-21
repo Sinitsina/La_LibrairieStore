@@ -1,0 +1,15 @@
+alter table public.db_user alter column id type bigint using id::bigint;
+alter table public.cover alter column id type bigint using id::bigint;
+alter table public.format alter column id type bigint using id::bigint;
+alter table public.sheets_type alter column id type bigint using id::bigint;
+alter table public.manufacturer alter column id type bigint using id::bigint;
+alter table public.db_order alter column id type bigint using id::bigint;
+alter table public.product alter column id type bigint using id::bigint;
+alter table public.book alter column id type bigint using id::bigint;
+alter table public.copybook alter column id type bigint using id::bigint;
+alter table public.datebook alter column id type bigint using id::bigint;
+alter table public.notebook alter column id type bigint using id::bigint;
+alter table public.sketchbook alter column id type bigint using id::bigint;
+alter table public.diary alter column id type bigint using id::bigint;
+alter table public.office_paper alter column id type bigint using id::bigint;
+alter table public.postcard alter column id type bigint using id::bigint;

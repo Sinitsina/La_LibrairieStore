@@ -1,0 +1,10 @@
+insert into diary (product_id) values ('141');
+insert into diary (product_id) values ('142');
+insert into diary (product_id) values ('143');
+insert into diary (product_id) values ('144');
+insert into diary (product_id) values ('145');
+insert into diary (product_id) values ('146');
+insert into diary (product_id) values ('147');
+insert into diary (product_id) values ('148');
+insert into diary (product_id) values ('149');
+insert into diary (product_id) values ('150');

@@ -1,0 +1,15 @@
+ALTER TABLE db_user ALTER COLUMN id TYPE bigint;
+ALTER TABLE cover ALTER COLUMN id TYPE bigint;
+ALTER TABLE format ALTER COLUMN id TYPE bigint;
+ALTER TABLE sheets_type ALTER COLUMN id TYPE bigint;
+ALTER TABLE manufacturer ALTER COLUMN id TYPE bigint;
+ALTER TABLE db_order ALTER COLUMN id TYPE bigint;
+ALTER TABLE product ALTER COLUMN id TYPE bigint;
+ALTER TABLE book ALTER COLUMN id TYPE bigint;
+ALTER TABLE copybook ALTER COLUMN id TYPE bigint;
+ALTER TABLE datebook ALTER COLUMN id TYPE bigint;
+ALTER TABLE notebook ALTER COLUMN id TYPE bigint;
+ALTER TABLE sketchbook ALTER COLUMN id TYPE bigint;
+ALTER TABLE diary ALTER COLUMN id TYPE bigint;
+ALTER TABLE office_paper ALTER COLUMN id TYPE bigint;
+ALTER TABLE postcard ALTER COLUMN id TYPE bigint;
