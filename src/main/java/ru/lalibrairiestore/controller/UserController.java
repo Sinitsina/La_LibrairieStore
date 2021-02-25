@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import ru.lalibrairiestore.dto.UserDTO;
 import ru.lalibrairiestore.model.User;
 import ru.lalibrairiestore.service.UserService;
 
@@ -31,7 +32,7 @@ public class UserController {
     }
 
     @GetMapping("/user/{id}")
-    public User findUserById(@PathVariable Long id) {
+    public UserDTO findUserById(@PathVariable Long id) {
         return userService.findUserById(id);
     }
 }
