@@ -24,12 +24,13 @@ public class Order {
      * User
      */
     @ManyToOne
-    @JoinColumn(name = "user_customer_id")
+    @JoinColumn(name = "users_id")
     private User customer;
 
     /**
      * Delivery address
      */
+
     @Embedded
     private Address address;
 

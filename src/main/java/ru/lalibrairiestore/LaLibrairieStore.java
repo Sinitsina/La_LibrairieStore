@@ -2,10 +2,9 @@ package ru.lalibrairiestore;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
-@EnableSwagger2
+//@EnableSwagger2
 public class LaLibrairieStore {
     public static void main(String[] args) {
         SpringApplication.run(LaLibrairieStore.class, args);

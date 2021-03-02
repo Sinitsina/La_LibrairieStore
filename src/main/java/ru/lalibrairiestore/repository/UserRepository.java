@@ -8,6 +8,8 @@ import java.util.Set;
 
 public interface UserRepository extends JpaRepository<User, Long> {
 
+    User findUserByLogin(String login);
+
 //    @Query('select e from db_users')
 //    Set<User> findAllByName(String name);
 }
