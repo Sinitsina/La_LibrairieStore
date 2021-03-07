@@ -70,6 +70,13 @@ public class Product {
     private SheetsType sheetsType;
 
     /**
+     * Product sheet's type
+     */
+    @ManyToOne
+    @JoinColumn(name = "paper_type_id")
+    private SheetsType paperType;
+
+    /**
      * Product manufacturer
      */
     @ManyToOne

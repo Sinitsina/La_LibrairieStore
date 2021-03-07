@@ -4,10 +4,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ru.lalibrairiestore.dto.UserDTO;
 import ru.lalibrairiestore.dto.UserRegistrationDTO;
 import ru.lalibrairiestore.model.User;
@@ -38,7 +35,7 @@ public class UserController {
         return userService.findUserById(id);
     }
 
-    @GetMapping("/registration")
+    @PostMapping("/registration")
     public UserDTO registration(@RequestBody UserRegistrationDTO userRegistrationDTO) {
         return userService.registration(userRegistrationDTO);
     }

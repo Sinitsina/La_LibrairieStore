@@ -1,0 +1,10 @@
+update product set sheets_type_id = 8 where id = 141;
+update product set sheets_type_id = 8 where id = 142;
+update product set sheets_type_id = 8 where id = 143;
+update product set sheets_type_id = 8 where id = 144;
+update product set sheets_type_id = 8 where id = 145;
+update product set sheets_type_id = 8 where id = 146;
+update product set sheets_type_id = 8 where id = 147;
+update product set sheets_type_id = 8 where id = 148;
+update product set sheets_type_id = 8 where id = 149;
+update product set sheets_type_id = 8 where id = 150;

@@ -32,6 +32,7 @@ public class Order {
      */
 
     @Embedded
+    @Column(name = "address")
     private Address address;
 
     /**

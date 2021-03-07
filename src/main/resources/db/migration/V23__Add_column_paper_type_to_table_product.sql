@@ -1,0 +1,1 @@
+alter table product add column paper_type_id bigint constraint product_paper_type_id_fkey references paper_type;

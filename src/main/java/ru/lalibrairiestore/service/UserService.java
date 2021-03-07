@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.lalibrairiestore.dto.UserDTO;
 import ru.lalibrairiestore.dto.UserRegistrationDTO;
+import ru.lalibrairiestore.exceptions.EntityNotFoundException;
 import ru.lalibrairiestore.mapper.UserMapper;
 import ru.lalibrairiestore.model.Role;
 import ru.lalibrairiestore.model.User;
@@ -37,7 +38,7 @@ public class UserService {
 
     public UserDTO findUserById(Long id) {
         return userMapper.userToUserDto(userRepository.findById(id)
-                .orElseThrow(()-> new IllegalArgumentException("User was not found")));
+                .orElseThrow(()-> new EntityNotFoundException(id)));
     }
 
     public UserDTO registration(UserRegistrationDTO userRegistrationDTO) {
@@ -55,7 +56,7 @@ public class UserService {
         }
 
         user.setDeleted(false);
-        user.setRole(Role.USER);
+        user.setRole(Role.CUSTOMER);
 
         userRepository.save(user);
 
