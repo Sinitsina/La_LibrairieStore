@@ -6,6 +6,8 @@ import ru.lalibrairiestore.dto.UserDTO;
 import ru.lalibrairiestore.dto.UserRegistrationDTO;
 import ru.lalibrairiestore.model.User;
 
+import java.util.List;
+
 @Mapper(componentModel = "spring")
 public interface UserMapper {
 
@@ -18,5 +20,7 @@ public interface UserMapper {
     UserRegistrationDTO userToUserRegistrationDTO(User user);
 
     User userRegistrationDTOToUser(UserRegistrationDTO userRegistrationDTO);
+
+    List<UserDTO> userListToDTOUserList(List<User> users);
 
 }

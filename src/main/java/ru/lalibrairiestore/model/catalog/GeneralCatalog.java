@@ -16,7 +16,7 @@ public abstract class GeneralCatalog {
     private Long id;
 
     /**
-     *Name
+     * Name
      */
     @Column(name = "name")
     private String name;

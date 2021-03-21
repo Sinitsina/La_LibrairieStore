@@ -1,8 +1,7 @@
 package ru.lalibrairiestore.model;
 
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import ru.lalibrairiestore.model.catalog.Cover;
 import ru.lalibrairiestore.model.catalog.Format;
 import ru.lalibrairiestore.model.catalog.Manufacturer;
@@ -11,8 +10,7 @@ import ru.lalibrairiestore.model.catalog.SheetsType;
 import javax.persistence.*;
 import java.math.BigDecimal;
 
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @Inheritance(strategy = InheritanceType.JOINED)
 @Entity
@@ -40,7 +38,7 @@ public class Product {
      * Current percentage discount
      */
     @Column(name = "discount_percent")
-    private byte discountPercent;
+    private int discountPercent;
 
     /**
      * Product price

@@ -1,10 +1,12 @@
 package ru.lalibrairiestore.dto;
 
 import lombok.Data;
+import lombok.Getter;
 
 import java.math.BigDecimal;
 
 @Data
+@Getter
 public class ProductDTO {
 
 //    private Long id;

@@ -6,13 +6,15 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name = "db_order")
+@Table(name = "db_order", schema = "public")
 public class Order {
 
     @Id
@@ -25,14 +27,13 @@ public class Order {
      */
     @ManyToOne
     @JoinColumn(name = "users_id")
-    private User customer;
+    private User user;
 
     /**
      * Delivery address
      */
 
     @Embedded
-    @Column(name = "address")
     private Address address;
 
     /**
@@ -51,7 +52,7 @@ public class Order {
     /**
      * Date of order creation
      */
-    @Column(name = "order_date")
+    @Column(name = "order_date", columnDefinition = "DATE")
     private Date dateOrder;
 
     /**
@@ -59,4 +60,10 @@ public class Order {
      */
     @Column(name = "total_cost")
     private BigDecimal totalCost;
+
+    /**
+     * Shopping cart
+     */
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+    private List<CartItem> cartItems = new ArrayList<>();
 }

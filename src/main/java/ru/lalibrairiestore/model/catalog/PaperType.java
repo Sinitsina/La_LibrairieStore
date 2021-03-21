@@ -8,5 +8,5 @@ import javax.persistence.Table;
 @NoArgsConstructor
 @Entity
 @Table(name = "paper_type")
-public class PaperType extends GeneralCatalog{
+public class PaperType extends GeneralCatalog {
 }

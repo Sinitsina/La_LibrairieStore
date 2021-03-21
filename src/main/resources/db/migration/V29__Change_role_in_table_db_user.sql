@@ -1,0 +1,10 @@
+update db_user set role = 'CUSTOMER' where id = 2;
+update db_user set role = 'CUSTOMER' where id = 3;
+update db_user set role = 'CUSTOMER' where id = 4;
+update db_user set role = 'CUSTOMER' where id = 5;
+update db_user set role = 'CUSTOMER' where id = 6;
+update db_user set role = 'CUSTOMER' where id = 7;
+update db_user set role = 'CUSTOMER' where id = 8;
+update db_user set role = 'CUSTOMER' where id = 9;
+update db_user set role = 'CUSTOMER' where id = 10;
+update db_user set role = 'CUSTOMER' where id = 11;

@@ -1,11 +1,12 @@
 package ru.lalibrairiestore.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -67,4 +68,14 @@ public class User {
     @Column(name = "is_deleted")
     private boolean isDeleted;
 
+    /**
+     * List of favourite products
+     */
+    @JsonIgnore
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "favourites",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "product_id"))
+    private List<Product> favouriteProducts = new ArrayList<>();
 }

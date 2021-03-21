@@ -2,6 +2,7 @@ package ru.lalibrairiestore.mapper;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
+import org.springframework.data.domain.Page;
 import ru.lalibrairiestore.dto.BookDTO;
 import ru.lalibrairiestore.model.Book;
 
@@ -12,10 +13,13 @@ public interface BookMapper {
 
     BookMapper INSTANCE = Mappers.getMapper(BookMapper.class);
 
-    List<BookDTO> map(List<Book> books);
+    List<BookDTO> bookListToDTOBookList(List<Book> books);
 
-    BookDTO bookToBookDto(Book book);
+    BookDTO bookToBookDTO(Book book);
 
     Book bookDTOToBook(BookDTO bookDTO);
 
+    default Page<BookDTO> bookToBooksDTO(Page<Book> books) {
+        return books.map(this::bookToBookDTO);
+    }
 }

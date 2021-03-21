@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import ru.lalibrairiestore.dto.UserDTO;
 import ru.lalibrairiestore.dto.UserRegistrationDTO;
-import ru.lalibrairiestore.model.User;
 import ru.lalibrairiestore.service.UserService;
 
 import java.util.List;
@@ -24,19 +23,39 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/all")
-    @ApiOperation("find all users method")
-    public List<User> findAll() {
+    @PostMapping("/registration")
+    @ApiOperation("user registration")
+    public UserDTO registration(@RequestBody UserRegistrationDTO userRegistrationDTO) {
+        return userService.registration(userRegistrationDTO);
+    }
+
+    @GetMapping("/user-all")
+    @ApiOperation("find all users")
+    public List<UserDTO> findAll() {
         return userService.findAll();
     }
 
-    @GetMapping("/user/{id}")
-    public UserDTO findUserById(@PathVariable Long id) {
-        return userService.findUserById(id);
+    @GetMapping("/{userId}")
+    @ApiOperation("find user by id")
+    public UserDTO findUserById(@PathVariable Long userId) {
+        return userService.findUserById(userId);
     }
 
-    @PostMapping("/registration")
-    public UserDTO registration(@RequestBody UserRegistrationDTO userRegistrationDTO) {
-        return userService.registration(userRegistrationDTO);
+    @GetMapping("/{login}")
+    @ApiOperation("find user by login")
+    public UserDTO findUserByLogin(@PathVariable String login) {
+        return userService.findUserByLogin(login);
+    }
+
+    @GetMapping("/{email}")
+    @ApiOperation("find user by email")
+    public UserDTO findUserByEMail(@PathVariable String email) {
+        return userService.findUserByEMail(email);
+    }
+
+    @GetMapping("/{phone}")
+    @ApiOperation("find user by login")
+    public UserDTO findUserByPhoneNumber(@PathVariable String phone) {
+        return userService.findUserByPhoneNumber(phone);
     }
 }

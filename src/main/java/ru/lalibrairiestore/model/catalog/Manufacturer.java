@@ -2,7 +2,8 @@ package ru.lalibrairiestore.model.catalog;
 
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @NoArgsConstructor
 @Entity

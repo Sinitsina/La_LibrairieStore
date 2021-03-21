@@ -10,7 +10,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @Entity
 @Table(name = "shopping_card")
-public class CardItem {
+public class CartItem {
 
     @Data
     @NoArgsConstructor
@@ -29,10 +29,6 @@ public class CardItem {
     /**
      * Product
      */
-
-    //card - product
-    // many - one
-
     @ManyToOne
     @JoinColumn(name = "product_id", referencedColumnName = "id",
             nullable = false, insertable = false, updatable = false)
@@ -41,9 +37,6 @@ public class CardItem {
     /**
      * Order
      */
-    //card - order
-    // many - one
-
     @ManyToOne
     @JoinColumn(name = "order_id", referencedColumnName = "id",
             nullable = false, insertable = false, updatable = false)
