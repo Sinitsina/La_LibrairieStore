@@ -21,8 +21,4 @@ public class OrderDTO {
     private BigDecimal totalCost;
 
     private OrderStatus orderStatus;
-
-    private UserDTO userDTO;
-
-
 }

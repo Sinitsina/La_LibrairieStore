@@ -1,6 +1,7 @@
 package ru.lalibrairiestore.service;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
@@ -16,12 +17,15 @@ import ru.lalibrairiestore.repository.BookRepository;
 
 import java.util.List;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class BookService {
 
     private BookRepository bookRepository;
+
     private BookMapper bookMapper;
+
     private ProductService productService;
 
     @Autowired
@@ -56,7 +60,10 @@ public class BookService {
     public List<BookDTO> findBookByAuthor(String author) {
 
         return bookMapper.bookListToDTOBookList(bookRepository.findAllByAuthor(author)
-                .orElseThrow(() -> new EntityNotFoundException("There is no books of this author.")));
+                .orElseThrow(() -> {
+                    log.error("IN findBook - book with author: {} wasn't found", author);
+                    return new EntityNotFoundException("There is no books of this author.");
+                }));
     }
 
     /**
@@ -65,7 +72,10 @@ public class BookService {
     public BookDTO findBookByTitle(String title) {
 
         return bookMapper.bookToBookDTO(bookRepository.findAllByTitle(title)
-                .orElseThrow(() -> new EntityNotFoundException("The book was not found.")));
+                .orElseThrow(() -> {
+                    log.error("IN findBook - book with title: {} wasn't found", title);
+                    return new EntityNotFoundException("The book was not found.");
+                }));
     }
 
     /**
@@ -83,7 +93,10 @@ public class BookService {
     public BookDTO findBook(Long bookId) {
 
         return bookMapper.bookToBookDTO(bookRepository.findById(bookId)
-                .orElseThrow(() -> new EntityNotFoundException("The book id " + bookId + " was not found")));
+                .orElseThrow(() -> {
+                    log.error("IN findBook - book id: {} wasn't found", bookId);
+                    return new EntityNotFoundException("The book id " + bookId + " was not found");
+                }));
     }
 
     /**
@@ -94,8 +107,9 @@ public class BookService {
         if (!bookRepository.existsByTitle(bookDTO.getTitle())) {
             Book book = bookMapper.bookDTOToBook(bookDTO);
 
-            book.setDeleted(false);
             bookRepository.save(book);
+
+            log.info("IN addBook - book: {} successfully added", book);
 
             return bookMapper.bookToBookDTO(book);
         } else {
@@ -108,12 +122,16 @@ public class BookService {
      */
     public BookDTO editBook(Long bookId, BookDTO bookDTO) {
 
-        bookRepository.findById(bookId)
+        Book book = bookRepository.findById(bookId)
                 .orElseThrow(() -> new EntityNotFoundException("The book id " + bookId + " was not found"));
+
+        bookDTO.setId(bookId);
 
         bookRepository.save(bookMapper.bookDTOToBook(bookDTO));
 
-        return bookMapper.bookToBookDTO(bookRepository.getOne(bookId));
+        log.info("IN editBook - book: {} successfully edited", book);
+
+        return bookMapper.bookToBookDTO(book);
     }
 
     /**
@@ -122,26 +140,13 @@ public class BookService {
     public void deleteBook(Long bookId) {
 
         Book book = bookRepository.findById(bookId)
-                .orElseThrow(() -> new EntityNotFoundException("The book id " + bookId + " was not found"));
+                .orElseThrow(() -> {
+                    log.error("IN deleteBook - book id: {} wasn't found and deleted", bookId);
+                    return new EntityNotFoundException("The book id " + bookId + " wasn't found");
+                });
 
         book.setDeleted(true);
         bookRepository.save(book);
+        log.info("IN deleteBook - book: {} successfully deleted", book);
     }
-
-    /*
-    проверить позже, не работает сортировка
-     */
-
-//    public PageDTO<BookDTO> findBookByPrice(BigDecimal priceMin, BigDecimal priceMax,
-//                                         int pageNo, int pageSize, SortingParams sortingParams) {
-//        ProductService productService = new ProductService();
-//
-//        List<Book> result = bookRepository.findAll().stream()
-//                .filter(e -> (e.getPrice().compareTo(priceMin) <= 0  && e.getPrice().compareTo(priceMax) > 0))
-//                .collect(Collectors.toList());
-//
-//        return new PageDTO<>(bookMapper.bookToBooksDTO(new PageImpl<>(result,
-//                productService.sortingWithParams(sortingParams, pageNo, pageSize), 10)));
-//    }
-
 }

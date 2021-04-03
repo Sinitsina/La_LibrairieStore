@@ -1,6 +1,7 @@
 package ru.lalibrairiestore.service;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.lalibrairiestore.dto.OrderDTO;
@@ -12,11 +13,13 @@ import ru.lalibrairiestore.model.CartItem;
 import ru.lalibrairiestore.model.Order;
 import ru.lalibrairiestore.model.OrderStatus;
 import ru.lalibrairiestore.repository.OrderRepository;
+import ru.lalibrairiestore.security.JwtUser;
 
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class OrderService {
@@ -38,8 +41,9 @@ public class OrderService {
     /**
      * Make an order
      */
-    public OrderDTO makeOrder(OrderDetailsDTO orderDetailsDTO, Long userId) {
+    public OrderDTO makeOrder(OrderDetailsDTO orderDetailsDTO) {
 
+        Long userId = JwtUser.getCurrentUserID();
         Order order = orderRepository.findByUserIdAndOrderStatus(userId, OrderStatus.CREATED);
 
         if (order == null) {
@@ -53,6 +57,8 @@ public class OrderService {
         order.setOrderStatus(OrderStatus.ACTIVE);
 
         orderRepository.save(order);
+        log.info("IN makeOrder {} order was created", order);
+
         return orderMapper.orderToOrderDTO(order);
     }
 
@@ -67,6 +73,24 @@ public class OrderService {
 
         order.setOrderStatus(OrderStatus.CANCELLED);
         orderRepository.save(order);
+
+        log.info("IN cancelOrder for {} order status was changed to cancelled", order);
+
+        return orderMapper.orderToOrderDTO(order);
+    }
+
+    /**
+     * Make order status completed
+     */
+    public OrderDTO completeOrder(Long orderId) {
+
+        Order order = orderRepository.getOne(orderId);
+
+        order.setOrderStatus(OrderStatus.COMPLETED);
+
+        orderRepository.save(order);
+
+        log.info("IN completeOrder for {} order status was changed to completed", order);
 
         return orderMapper.orderToOrderDTO(order);
     }
@@ -92,7 +116,12 @@ public class OrderService {
     public OrderDTO findOrderById(Long orderId) {
 
         Order order = orderRepository.findById(orderId)
-                .orElseThrow(() -> new EntityNotFoundException("Order id " + orderId + " was not found"));
+                .orElseThrow(() -> {
+                    log.info("IN findOrderById order id: {} wasn't found", orderId);
+                    return new EntityNotFoundException("Order id " + orderId + " was not found");
+                });
+
+        log.info("IN findOrderById {} order was found", order);
 
         return orderMapper.orderToOrderDTO(order);
     }
@@ -100,9 +129,12 @@ public class OrderService {
     /**
      * Show all user's orders
      */
-    public List<OrderDTO> findAllUserOrders(Long userId) {
+    public List<OrderDTO> findAllUserOrders() {
 
-        List<Order> userOrders = orderRepository.findAllByUserId(userId);
+        List<Order> userOrders = orderRepository.findAllByUserId(JwtUser.getCurrentUserID());
+
+        log.info("IN findAllUserOrders {} user orders were found", userOrders.size());
+
         return orderMapper.ordersToOrdersDTO(userOrders);
     }
 }

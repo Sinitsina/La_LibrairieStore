@@ -1,2 +1,4 @@
-package ru.lalibrairiestore.transfer;public interface New {
+package ru.lalibrairiestore.transfer;
+
+public interface New {
 }

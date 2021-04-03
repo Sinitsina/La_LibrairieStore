@@ -17,8 +17,4 @@ public interface ProductMapper {
     ProductDTO productToProductDTO(Product product);
 
     Product productDTOToProduct(ProductDTO productDTO);
-
-//    default Page<ProductDTO> productsToProductsDTO(Page<? extends Product> products) {
-//        return products.map(this::productToProductDTO);
-//    }
 }

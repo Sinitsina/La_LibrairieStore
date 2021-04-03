@@ -1,0 +1,1 @@
+ALTER TABLE db_user ALTER COLUMN password TYPE varchar(500);

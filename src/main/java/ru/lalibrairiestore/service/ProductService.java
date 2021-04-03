@@ -1,6 +1,7 @@
 package ru.lalibrairiestore.service;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -14,10 +15,12 @@ import ru.lalibrairiestore.model.Product;
 import ru.lalibrairiestore.model.User;
 import ru.lalibrairiestore.repository.ProductRepository;
 import ru.lalibrairiestore.repository.UserRepository;
+import ru.lalibrairiestore.security.JwtUser;
 
 import java.util.List;
 
 @Service
+@Slf4j
 @RequiredArgsConstructor
 public class ProductService {
 
@@ -59,12 +62,12 @@ public class ProductService {
     /**
      * Add product to favourites
      */
-    public ProductDTO addProductToFavourites(Long productId, Long userId) {
+    public ProductDTO addProductToFavourites(Long productId) {
+
+        User user = userRepository.findUserById(JwtUser.getCurrentUserID());
 
         Product product = productRepository.findById(productId)
                 .orElseThrow(() -> new EntityNotFoundException("The product id " + productId + " was not found"));
-
-        User user = userRepository.findUserById(userId);
 
         List<Product> favouriteProducts = user.getFavouriteProducts();
 
@@ -76,23 +79,26 @@ public class ProductService {
         user.setFavouriteProducts(favouriteProducts);
 
         userRepository.save(user);
-
+        log.info("IN addProductToFavourites - product {} successfully added to favourites", product);
         return productMapper.productToProductDTO(product);
     }
 
     /**
      * Delete product from favourites
      */
-    public void deleteProductFromFavourites(Long productId, Long userId) {
+    public void deleteProductFromFavourites(Long productId) {
 
-        User user = userRepository.findUserById(userId);
+        User user = userRepository.findUserById(JwtUser.getCurrentUserID());
         List<Product> favouriteProducts = user.getFavouriteProducts();
+        Product product = productRepository.findProductById(productId);
 
-        if (favouriteProducts.contains(productRepository.findProductById(productId))) {
+        if (favouriteProducts.contains(product)) {
             favouriteProducts.remove(productRepository.findProductById(productId));
             user.setFavouriteProducts(favouriteProducts);
 
             userRepository.save(user);
+            log.info("IN deleteProductFromFavourites - product {} successfully deleted from favourites", product);
+
         } else {
             throw new EntityNotFoundException("This product isn't on your favourite list!");
         }
@@ -102,14 +108,16 @@ public class ProductService {
     /**
      * Show all favourite products by user id
      */
-    public List<ProductDTO> showFavouriteProducts(Long userId) {
+    public List<ProductDTO> showFavouriteProducts() {
 
-        User user = userRepository.findUserById(userId);
+        User user = userRepository.findUserById(JwtUser.getCurrentUserID());
         List<Product> products = user.getFavouriteProducts();
 
         if (products.isEmpty()) {
             throw new EntityNotFoundException("You don't have any favourite products.");
         }
+
+        log.info("IN showFavouriteProducts {} products were found", products.size());
 
         return productMapper.productListToDTOProductList(products);
     }
@@ -125,7 +133,9 @@ public class ProductService {
             product.setDeleted(false);
             productRepository.save(product);
 
+            log.info("IN addProduct - product {} successfully added to data base.", product);
             return productMapper.productToProductDTO(product);
+
         } else {
             throw new BadRequestException("Product already exist.");
         }
@@ -136,12 +146,14 @@ public class ProductService {
      */
     public ProductDTO editProduct(Long productId, ProductDTO productDTO) {
 
-        productRepository.findById(productId)
+        Product product = productRepository.findById(productId)
                 .orElseThrow(() -> new EntityNotFoundException("The product id " + productId + " was not found"));
 
+        productDTO.setId(productId);
         productRepository.save(productMapper.productDTOToProduct(productDTO));
+        log.info("IN editProduct - product with id {} successfully added to data base.", productId);
 
-        return productMapper.productToProductDTO(productRepository.getOne(productId));
+        return productMapper.productToProductDTO(product);
     }
 
     /**
@@ -153,7 +165,8 @@ public class ProductService {
                 .orElseThrow(() -> new EntityNotFoundException("The product id " + productId + " was not found"));
 
         product.setDeleted(true);
+        log.info("IN deleteProduct - product {} successfully deleted.", product);
+
         productRepository.save(product);
     }
-
 }

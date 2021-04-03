@@ -35,7 +35,7 @@ public class User {
      * User email
      */
     @Column(name = "email")
-    private String EMail;
+    private String email;
 
     /**
      * User phone number

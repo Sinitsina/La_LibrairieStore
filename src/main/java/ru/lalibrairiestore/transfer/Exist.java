@@ -1,2 +1,4 @@
-package ru.lalibrairiestore.transfer;public interface Exist {
+package ru.lalibrairiestore.transfer;
+
+public interface Exist {
 }

@@ -22,5 +22,4 @@ public interface BookRepository extends JpaRepository<Book, Long>,
     Optional<Book> findAllByTitle(String title);
 
     boolean existsByTitle(String title);
-
 }

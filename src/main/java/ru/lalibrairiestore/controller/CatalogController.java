@@ -9,6 +9,8 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import ru.lalibrairiestore.dto.GeneralCatalogDTO;
 import ru.lalibrairiestore.service.CatalogService;
+import ru.lalibrairiestore.transfer.Exist;
+import ru.lalibrairiestore.transfer.New;
 
 import javax.annotation.security.RolesAllowed;
 import java.util.List;
@@ -30,7 +32,7 @@ public class CatalogController {
 
     @RolesAllowed({ROLE_ADMIN})
     @PostMapping("/covers")
-    public ResponseEntity<GeneralCatalogDTO> addCoverType(@Validated(GeneralCatalogDTO.New.class)
+    public ResponseEntity<GeneralCatalogDTO> addCoverType(@Validated(New.class)
                                                           @RequestBody GeneralCatalogDTO generalCatalogDTO) {
 
         return new ResponseEntity<>(catalogService
@@ -39,7 +41,7 @@ public class CatalogController {
 
     @RolesAllowed({ROLE_ADMIN})
     @PostMapping("/formats")
-    public ResponseEntity<GeneralCatalogDTO> addFormatType(@Validated(GeneralCatalogDTO.New.class)
+    public ResponseEntity<GeneralCatalogDTO> addFormatType(@Validated(New.class)
                                                            @RequestBody GeneralCatalogDTO generalCatalogDTO) {
 
         return new ResponseEntity<>(catalogService
@@ -48,7 +50,7 @@ public class CatalogController {
 
     @RolesAllowed({ROLE_ADMIN})
     @PostMapping("/manufacturers")
-    public ResponseEntity<GeneralCatalogDTO> addManufacturer(@Validated(GeneralCatalogDTO.New.class)
+    public ResponseEntity<GeneralCatalogDTO> addManufacturer(@Validated(New.class)
                                                              @RequestBody GeneralCatalogDTO generalCatalogDTO) {
 
         return new ResponseEntity<>(catalogService.addManufacturer(generalCatalogDTO.getName()), HttpStatus.OK);
@@ -56,7 +58,7 @@ public class CatalogController {
 
     @RolesAllowed({ROLE_ADMIN})
     @PostMapping("/paper-types")
-    public ResponseEntity<GeneralCatalogDTO> addPaperType(@Validated(GeneralCatalogDTO.New.class)
+    public ResponseEntity<GeneralCatalogDTO> addPaperType(@Validated(New.class)
                                                           @RequestBody GeneralCatalogDTO generalCatalogDTO) {
 
         return new ResponseEntity<>(catalogService.addPaperType(generalCatalogDTO.getName()), HttpStatus.OK);
@@ -64,7 +66,7 @@ public class CatalogController {
 
     @RolesAllowed({ROLE_ADMIN})
     @PostMapping("/sheets-types")
-    public ResponseEntity<GeneralCatalogDTO> addSheetsType(@Validated(GeneralCatalogDTO.New.class)
+    public ResponseEntity<GeneralCatalogDTO> addSheetsType(@Validated(New.class)
                                                            @RequestBody GeneralCatalogDTO generalCatalogDTO) {
 
         return new ResponseEntity<>(catalogService.addSheetsType(generalCatalogDTO.getName()), HttpStatus.OK);
@@ -73,7 +75,7 @@ public class CatalogController {
     @RolesAllowed({ROLE_ADMIN})
     @PutMapping("/covers/{coverTypeId}")
     public ResponseEntity<GeneralCatalogDTO> editCoverType(@PathVariable Long coverTypeId,
-                                                           @Validated(GeneralCatalogDTO.Exist.class)
+                                                           @Validated(Exist.class)
                                                            @RequestBody GeneralCatalogDTO generalCatalogDTO) {
 
         return new ResponseEntity<>(catalogService
@@ -83,7 +85,7 @@ public class CatalogController {
     @RolesAllowed({ROLE_ADMIN})
     @PutMapping("/formats/{formatId}")
     public ResponseEntity<GeneralCatalogDTO> editFormatType(@PathVariable Long formatId,
-                                                            @Validated(GeneralCatalogDTO.Exist.class)
+                                                            @Validated(Exist.class)
                                                             @RequestBody GeneralCatalogDTO generalCatalogDTO) {
 
         return new ResponseEntity<>(catalogService
@@ -93,7 +95,7 @@ public class CatalogController {
     @RolesAllowed({ROLE_ADMIN})
     @PutMapping("/manufacturers/{manufacturerId}")
     public ResponseEntity<GeneralCatalogDTO> editManufacturer(@PathVariable Long manufacturerId,
-                                                              @Validated(GeneralCatalogDTO.Exist.class)
+                                                              @Validated(Exist.class)
                                                               @RequestBody GeneralCatalogDTO generalCatalogDTO) {
 
         return new ResponseEntity<>(catalogService
@@ -103,7 +105,7 @@ public class CatalogController {
     @RolesAllowed({ROLE_ADMIN})
     @PutMapping("/paper-types/{paperTypeId}")
     public ResponseEntity<GeneralCatalogDTO> editPaperType(@PathVariable Long paperTypeId,
-                                                           @Validated(GeneralCatalogDTO.Exist.class)
+                                                           @Validated(Exist.class)
                                                            @RequestBody GeneralCatalogDTO generalCatalogDTO) {
 
         return new ResponseEntity<>(catalogService
@@ -113,7 +115,7 @@ public class CatalogController {
     @RolesAllowed({ROLE_ADMIN})
     @PutMapping("/sheets-types/{sheetsTypeId}")
     public ResponseEntity<GeneralCatalogDTO> editSheetsType(@PathVariable Long sheetsTypeId,
-                                                            @Validated(GeneralCatalogDTO.Exist.class)
+                                                            @Validated(Exist.class)
                                                             @RequestBody GeneralCatalogDTO generalCatalogDTO) {
 
         return new ResponseEntity<>(catalogService

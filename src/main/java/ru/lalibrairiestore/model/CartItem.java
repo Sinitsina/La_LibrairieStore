@@ -18,9 +18,9 @@ public class CartItem {
     @Embeddable
     public static class CartItemId implements Serializable {
 
-        private Long product_id;
-
         private Long order_id;
+
+        private Long product_id;
     }
 
     @EmbeddedId
