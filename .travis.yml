@@ -1,0 +1,13 @@
+language: java
+jdk:
+  - openjdk15
+
+sudo: false
+
+# Send notifications to email if build failed
+notifications:
+  email:
+    recipients:
+      -sinitsina.olga.a@gmail.com
+    on_success: never # default: change
+    on_failure: always # default: always
