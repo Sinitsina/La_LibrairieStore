@@ -55,3 +55,4 @@ Cart:
 - Gradle
 - Flyway
 - MapStruct
+- Travis CI
