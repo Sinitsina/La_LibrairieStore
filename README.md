@@ -44,13 +44,13 @@ Cart:
 ![DB](https://github.com/Sinitsina/La_LibrairieStore/blob/main/src/main/resources/DB.png)
 
 ## Technology
-Java 15
-Spring Boot
-Spring Data JPA
-Spring Security
-Hibernate
-PostgreSQL
-Swagger
-Gradle
-Flyway
-MapStruct
+- Java 15
+- Spring Boot
+- Spring Data JPA
+- Spring Security
+- Hibernate
+- PostgreSQL
+- Swagger
+- Gradle
+- Flyway
+- MapStruct
