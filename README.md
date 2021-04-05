@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/Sinitsina/La_LibrairieStore.svg?branch=main)](https://travis-ci.org/Sinitsina/La_LibrairieStore)
 # La Librairie Store
 
 This is a java web application for online book shop. A user can register, pick up a book and, after authorization, make an order. It is also possible to add your favourite products to favourites, view the list of favourites and edit it.
@@ -54,3 +55,4 @@ Cart:
 - Gradle
 - Flyway
 - MapStruct
+- Travis CI
