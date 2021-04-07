@@ -44,13 +44,8 @@ dependencies {
     implementation group: 'javax.validation', name: 'validation-api', version: '2.0.1.Final'
     compile group: 'javax.xml.bind', name: 'jaxb-api', version: '2.4.0-b180830.0359'
 
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
 }
 
-flyway {
-    url = 'jdbc:postgresql://localhost:5433/db_lalibrairiestore'
-    user = 'postgres'
-    password = '2561304'
-    locations = ['classpath:db/migration']
-}
 flywayMigrate.dependsOn classes
 
