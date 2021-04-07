@@ -39,13 +39,14 @@ Cart:
 
 
 ## Api endpoints documentation
-![Swagger](https://github.com/Sinitsina/La_LibrairieStore/blob/main/src/main/resources/Swagger.png)
+![Swagger](https://github.com/Sinitsina/La_LibrairieStore/blob/main/src/main/resources/Swagger1.gif)
+
 
 ## Database schema
 ![DB](https://github.com/Sinitsina/La_LibrairieStore/blob/main/src/main/resources/DB.png)
 
 ## Technology
-- Java 15
+- Java 14
 - Spring Boot
 - Spring Data JPA
 - Spring Security
