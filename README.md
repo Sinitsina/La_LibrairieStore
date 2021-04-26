@@ -46,7 +46,7 @@ Cart:
 ![DB](https://github.com/Sinitsina/La_LibrairieStore/blob/main/src/main/resources/DB.png)
 
 ## Technology
-- Java 14
+- Java 11
 - Spring Boot
 - Spring Data JPA
 - Spring Security
